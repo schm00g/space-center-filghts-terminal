@@ -28,5 +28,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### Play with Demo on Vercel
 
 [Here](https://space-center-filghts-terminal.vercel.app/)
-
-// notes: https://www.apollographql.com/docs/apollo-server/schema/schema/
