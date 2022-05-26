@@ -11,8 +11,19 @@ import {
   gql
 } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error';
 
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if(graphQLErrors){
+    graphQLErrors.map(({ message, location, path }) => {
+      return alert(`GraphQL error ${message}`);
+    });
+  }
+});
+
+// TODO: where does errorLink go?
 const httpLink = createHttpLink({
+  errorLink,
   uri: 'http://localhost:3000/graphql',
 });
 
@@ -31,20 +42,6 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
-
-client
-  .query({
-    query: gql`
-      query GetAllPlanets {
-        planets {
-          id
-          name
-          code
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
