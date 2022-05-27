@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: inline-grid;
 `;
 
-const Card = styled.div`
+const Card = styled.button`
   font-size: 0.6em;
   color: black; 
   background-color: white;
@@ -17,8 +17,12 @@ const Card = styled.div`
   margin: 5px;
   border: 3px solid white;
   &:hover {
-    border: 3px solid #e4e7f2;
+    border: 3px solid #f0f2f0;
   }
+
+  // ${({ active }) => active && `
+  //   border: 3px solid black;
+  // `}
 `;
   
 const Title = styled.div`
@@ -38,20 +42,22 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
   const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DESTINATIONS_FROM_PLANET);
   const [destinations, setDestinations] = useState([]);
 
+  // TODO: capture selected planet to update state/css
+
   useEffect(() => {
     if(data){
       console.log(data.flights.nodes);
       setDestinations(data.flights.nodes);
     }
   }, [data]);
-  
+
   if(loading){
     console.log("Loading...");
   };
 
   if (error){
     console.error(`Error! ${error.message}`);
-  }; 
+  };
   
   let svgPath = require(`../assets/planets/planet-${id % 10}.svg`)
   return (
@@ -64,5 +70,7 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
     </Wrapper>
   )
 }
+
+// TODO: send props/events to side panel component
 
 export default SpaceCenterCard
