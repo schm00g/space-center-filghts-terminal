@@ -40,7 +40,8 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
 
   useEffect(() => {
     if(data){
-      // setDestinations();
+      console.log(data.flights.nodes);
+      setDestinations(data.flights.nodes);
     }
   }, [data]);
   
