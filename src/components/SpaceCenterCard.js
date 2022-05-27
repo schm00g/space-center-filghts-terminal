@@ -1,17 +1,28 @@
-import React from 'react'
+import { useLazyQuery } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Planet from '../assets/planets/planet-3.svg';
+import { GET_DESTINATIONS_FROM_PLANET } from '../GraphQL/Queries';
+
+const Wrapper = styled.div`
+  width: 300px;
+  display: inline-grid;
+`;
 
 const Card = styled.div`
   font-size: 0.6em;
-  color: black;
+  color: black; 
   background-color: white;
   border-radius: 15px;
-  padding: 5%;
-  margin: 3%;
-  `;
+  padding: 2%;
+  margin: 5px;
+  border: 3px solid white;
+  &:hover {
+    border: 3px solid #e4e7f2;
+  }
+`;
   
 const Title = styled.div`
+  max-width: 90%;
   font-weight: 800;
   text-align: left;
   font-size: 0.8em;
@@ -23,13 +34,33 @@ const SubTitle = styled(Title)`
   color: lightgrey;
 `;
 
-function SpaceCenterCard({name, totalFlightNumber}) {
+function SpaceCenterCard({ name, totalFlightNumber, id }) {
+  const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DESTINATIONS_FROM_PLANET);
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    if(data){
+      // setDestinations();
+    }
+  }, [data]);
+  
+  if(loading){
+    console.log("Loading...");
+  };
+
+  if (error){
+    console.error(`Error! ${error.message}`);
+  }; 
+  
+  let svgPath = require(`../assets/planets/planet-${id % 10}.svg`)
   return (
-    <Card>
-      <img src={Planet} alt="Planet"/>
-      <Title>{name}</Title>
-      <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
-    </Card>
+    <Wrapper>
+      <Card onClick={() => selectPlanet({ variables: { from: id } })}>
+        <img src={svgPath} alt="Planet"/>
+        <Title>{name}</Title>
+        <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
+      </Card>
+    </Wrapper>
   )
 }
 
