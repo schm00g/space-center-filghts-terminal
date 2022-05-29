@@ -9,11 +9,11 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.button`
-  font-size: 0.6em;
+  font-size: 18px;
   color: black; 
   background-color: white;
   border-radius: 15px;
-  padding: 2%;
+  padding: 5px;
   margin: 5px;
   border: 3px solid white;
   &:hover {
@@ -60,6 +60,7 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
   };
   
   let svgPath = require(`../assets/planets/planet-${id % 10}.svg`)
+
   return (
     <Wrapper>
       <Card onClick={() => selectPlanet({ variables: { from: id } })}>
