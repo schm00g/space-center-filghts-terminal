@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Panel = styled.div`
+const Panel = styled.section`
   font-size: 16px;
   color: black; 
   width 408px;
@@ -43,23 +43,51 @@ const Departures = styled.div`
   font-weight: 600;
 `;
 
+const Button = styled.button`
+  position: absolute;
+  background-color: #e8e9eb;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: grey;
+  &:hover {
+    background-color: #b5b5b5;
+  }
+`;
+
+const Icon = styled.div`
+  transform: rotate(-45deg) translateX(-1px) translateY(-1px);
+  font-size: 20px;
+`;
+
 function SidePanel() {
 
   // const client = useApolloClient();
 
+  const [sidePanelShown, setSidePanelShown] = useState(true);
+
+  const hidePanel = () => {
+    setSidePanelShown(false);
+  };
+
   return (
-    <Panel>
-      <Title>Wolf Valley Space Center</Title>
-      <Description>
-        Yada yada yada yada yada yada yada yada
-        Yada yada yada yada yada yada yada yada
-        Yada yada yada yada yada yada yada yada
-        Yada yada yada yada yada yada yada yada
-      </Description>
-      <Flights>Number of flights:</Flights>
-      <FlightCount>1234</FlightCount>
-      <Departures>Departures</Departures>
-    </Panel>
+    <div>
+      {sidePanelShown && 
+        <Panel>
+          <Button onClick={hidePanel}><Icon>+</Icon></Button>
+          <Title>Wolf Valley Space Center</Title>
+          <Description>
+            Yada yada yada yada yada yada yada yada
+            Yada yada yada yada yada yada yada yada
+            Yada yada yada yada yada yada yada yada
+            Yada yada yada yada yada yada yada yada
+          </Description>
+          <Flights>Number of flights:</Flights>
+          <FlightCount>1234</FlightCount>
+          <Departures>Departures</Departures>
+        </Panel>
+      }
+    </div>
   )
 }
 
