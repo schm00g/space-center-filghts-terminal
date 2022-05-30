@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_ALL_SPACE_CENTERS } from '../GraphQL/Queries';
 import SpaceCenterCard from './SpaceCenterCard';
+import LoadingSVG from '../assets/planet-loader.svg';
 
 function SpaceCenterGrid() {
   
@@ -15,7 +16,12 @@ function SpaceCenterGrid() {
   }, [data]);
   
   if(loading){
-    return <div><h1>Loading...</h1></div>;
+    // TODO: have <SpaceCenterGrid> take img as input?
+    return (
+      <div>
+        <img src={LoadingSVG} alt="Planet"/>
+      </div>
+    )
   };
 
   if (error){
