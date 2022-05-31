@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { GET_DESTINATIONS_FROM_PLANET } from '../GraphQL/Queries';
+import { GET_DEPARTURE_DETAILS_FROM_PLANET } from '../GraphQL/Queries';
 
 const Wrapper = styled.section`
   width: 300px;
@@ -44,7 +44,7 @@ const SubTitle = styled(Title)`
 `;
 
 function SpaceCenterCard({ name, totalFlightNumber, id }) {
-  const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DESTINATIONS_FROM_PLANET);
+  const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
   const [destinations, setDestinations] = useState([]);
 
   // TODO: capture selected planet to update state/css

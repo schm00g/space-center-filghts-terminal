@@ -12,7 +12,7 @@ export const GET_ALL_SPACE_CENTERS = gql`
 `;
 
 // TODO: rename
-export const GET_DESTINATIONS_FROM_PLANET = gql`
+export const GET_DEPARTURE_DETAILS_FROM_PLANET = gql`
     query GetDestinationsFromPlanet($from: ID!) {
         flights(from: $from) {
             nodes {
