@@ -3,17 +3,16 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GET_DESTINATIONS_FROM_PLANET } from '../GraphQL/Queries';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   width: 300px;
   display: inline-grid;
 `;
 
 const Card = styled.button`
-  font-size: 18px;
   color: black; 
   background-color: white;
   border-radius: 15px;
-  padding: 5px;
+  padding: 0 16px 16px 16px;
   margin: 5px;
   border: 3px solid white;
   &:hover {
@@ -26,16 +25,22 @@ const Card = styled.button`
 `;
   
 const Title = styled.div`
+  font-size: 16px;
+  font-weight: 600;
   max-width: 90%;
-  font-weight: 800;
+  line-height: 24px;
   text-align: left;
-  font-size: 0.8em;
   color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const SubTitle = styled(Title)`
-  font-weight: 600;
-  color: lightgrey;
+  font-weight: 400;
+  font-size: 14px;
+  color: #717785;
+  line-height: 18px
 `;
 
 function SpaceCenterCard({ name, totalFlightNumber, id }) {
@@ -72,6 +77,6 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
   )
 }
 
-// TODO: send props/events to side panel component
+// TODO: use Apollo Cache readQuery to access data
 
 export default SpaceCenterCard
