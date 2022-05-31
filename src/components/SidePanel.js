@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DepartureDetails from './DepartureDetails';
 import styled from 'styled-components';
 
 const Panel = styled.section`
@@ -45,18 +46,19 @@ const Departures = styled.div`
 
 const Button = styled.button`
   position: absolute;
-  background-color: #e8e9eb;
+  
+  background-color: #f0f0f0;
   border: none;
   padding: 6px 10px;
   border-radius: 5px;
   color: grey;
   &:hover {
-    background-color: #b5b5b5;
+    background-color: #e8e9eb;
   }
 `;
 
 const Icon = styled.div`
-  transform: rotate(-45deg) translateX(-1px) translateY(-1px);
+  transform: rotate(-45deg) translateX(1px) translateY(1px);
   font-size: 20px;
 `;
 
@@ -72,7 +74,7 @@ function SidePanel() {
 
   return (
     <div>
-      {sidePanelShown && 
+      {sidePanelShown &&
         <Panel>
           <Button onClick={hidePanel}><Icon>+</Icon></Button>
           <Title>Wolf Valley Space Center</Title>
@@ -85,6 +87,7 @@ function SidePanel() {
           <Flights>Number of flights:</Flights>
           <FlightCount>1234</FlightCount>
           <Departures>Departures</Departures>
+          <DepartureDetails></DepartureDetails>
         </Panel>
       }
     </div>
