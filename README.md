@@ -24,6 +24,15 @@ $ npm run start
 Runs the app in the local development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+### Details
+This project has been scaffolded using `create-react-app`. 
+
+For the GraphQL service `apollo-grapql` has been imported. 
+
+For styling and layout `styled-components` has been used. This allows the use of CSS in javascript files. 
+
+Future work. Add greater test coverage: unit, integration, end-to-end. Make design and layout responsive for different device sizes. 
+
 
 ### Play with Demo on Vercel
 
