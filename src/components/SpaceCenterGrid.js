@@ -4,9 +4,11 @@ import { GET_ALL_SPACE_CENTERS } from '../GraphQL/Queries';
 import SpaceCenterCard from './SpaceCenterCard';
 import LoadingSVG from '../assets/planet-loader.svg';
 
+
 function SpaceCenterGrid() {
   
   const { error, loading, data } = useQuery(GET_ALL_SPACE_CENTERS);
+
   const [spaceCenters, setSpaceCenters] = useState([]);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ function SpaceCenterGrid() {
     <div>
       {" "}
       {spaceCenters.map((val) => {
-        return <SpaceCenterCard name={val.name} totalFlightNumber={10} id={Number(val.id)} key={val.id}/>
+        return <SpaceCenterCard name={val.name} totalFlightNumber={10} id={val.id} key={val.id}/>
       })}
     </div>
   )
