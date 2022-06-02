@@ -67,7 +67,7 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
   return (
     <Card onClick={() => selectPlanet({ variables: { from: id } })}>
       <img src={svgPath} alt="Planet"/>
-      <Title>{id} {name}</Title>
+      <Title>{name}</Title>
       <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
     </Card>
   )
