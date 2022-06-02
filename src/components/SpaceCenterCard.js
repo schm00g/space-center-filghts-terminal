@@ -11,7 +11,6 @@ function SpaceCenterCard({ name, id, setFlights }) {
 
   useEffect(() => {
     if(data){
-      console.log(`Flights data for side panel: `, data?.flights?.nodes);
       setFlights(data?.flights?.nodes);
     }
   }, [data, setFlights]);
