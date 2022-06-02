@@ -1,17 +1,7 @@
 import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components';
 import { GET_NUMBER_OF_FLIGHTS } from '../GraphQL/Queries';
-
-const SubTitle = styled.div`
-  font-weight: 400;
-  font-size: 14px;
-  color: #717785;
-  line-height: 18px;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-`;
+import { SubTitle } from './styles/Cards.styled';
 
 function FlightCount({id}) {
   const [numberOfFlights, setNumberOfFlights] = useState(" ... ");

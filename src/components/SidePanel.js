@@ -1,82 +1,18 @@
 import React, { useState } from 'react';
 import DepartureDetails from './DepartureDetails';
-import styled from 'styled-components';
-import { useApolloClient } from '@apollo/client';
-
-const Panel = styled.section`
-  font-size: 16px;
-  color: black; 
-  width 408px;
-  background-color: white;
-  border-radius: 15px;
-  padding: 32px;
-  margin: 5px;
-  text-align: left;
-`;
-
-const Title = styled.div`
-  padding-top: 48px;
-  font-size: 18px;
-  width: 300px;
-  display: inline-grid;
-  font-weight: 800;
-  font-size: 32px;
-`;
-
-const Description = styled.div`
-  padding-top: 12px;
-  font-weight: 400;
-  color: #717785;
-`;
-
-const Flights = styled.div`
-  padding-top: 25px;
-  color: black; 
-`;
-
-const FlightCount = styled.div`
-  font-weight: 600;
-`;
-
-const Departures = styled.div`
-  padding-top: 25px;
-  text-transform: uppercase;
-  color: #717785;
-  font-weight: 600;
-`;
-
-const Button = styled.button`
-  position: absolute;
-  background-color: #f0f0f0;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  color: grey;
-  &:hover {
-    background-color: #e8e9eb;
-  }
-`;
-
-const Icon = styled.div`
-  transform: rotate(-45deg) translateX(0.5px) translateY(-1px);
-  font-size: 25px;
-`;
+import { 
+  Button, 
+  Departures, 
+  Description, 
+  FlightCount, 
+  Flights, 
+  Icon, 
+  Panel, 
+  Title 
+} from './styles/SidePanel.styled';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 function SidePanel({ spaceCenter }) {
-  // https://www.youtube.com/watch?v=6_39tpIBGIA
-  
-  const client = useApolloClient();
-
-  // const { flights } = client.readQuery({
-  //   query: GET_DEPARTURE_DETAILS_FROM_PLANET,
-  //   variables: {
-  //     id: 4,
-  //   }
-  // });
-
-  console.log(`Client: `, client.readQuery);
-  // console.log(`readQuery: `, flights);
-
   const [sidePanelShown, setSidePanelShown] = useState(true);
 
   const hidePanel = () => {
@@ -88,7 +24,7 @@ function SidePanel({ spaceCenter }) {
     <div>
       {sidePanelShown &&
         <Panel>
-          <Button onClick={hidePanel}><Icon>+</Icon></Button>
+          <Button onClick={hidePanel}><Icon><AiOutlinePlus></AiOutlinePlus></Icon></Button>
           <Title>{spaceCenter}</Title>
           <Description>
             Yada yada yada yada yada yada yada yada
