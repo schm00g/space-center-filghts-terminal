@@ -81,9 +81,9 @@ function SpaceCenterContainer() {
     // TODO: have <SpaceCenterContainer> take img as input?
     return (
       <motion.div 
-        initial={{ opacity: 0.2}}
-        animate={{ opacity: 1}}
-        transition={{ duration: 0.7 }}
+        initial={{ opacity: 0.1}}
+        animate={{ opacity: 0.4}}
+        transition={{ duration: 1}}
       >
         <Loading>
           <img src={LoadingSVG} alt="Planet"/>
@@ -110,7 +110,7 @@ function SpaceCenterContainer() {
               <motion.div 
                 initial={{ opacity: 0.75, translateX: 0, translateY: 0}}
                 animate={{ opacity: 1, translateX: 1, translateY: 1}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.2, delay: i * 0.1 }}
               >
                 <SpaceCenterCard name={value.name} totalFlightNumber={10} id={value.id} />
               </motion.div>
