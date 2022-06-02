@@ -2,6 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GET_DEPARTURE_DETAILS_FROM_PLANET } from '../GraphQL/Queries';
+import FlightCount from './FlightCount';
 
 const Card = styled.button`
   color: black; 
@@ -33,13 +34,6 @@ const Title = styled.div`
   text-overflow: ellipsis;
 `;
 
-const SubTitle = styled(Title)`
-  font-weight: 400;
-  font-size: 14px;
-  color: #717785;
-  line-height: 18px
-`;
-
 function SpaceCenterCard({ name, totalFlightNumber, id }) {
   const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
   const [flights, setFlights] = useState([]);
@@ -68,11 +62,11 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
     <Card onClick={() => selectPlanet({ variables: { from: id } })}>
       <img src={svgPath} alt="Planet"/>
       <Title>{name}</Title>
-      <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
+      <FlightCount id={id} />
     </Card>
   )
 }
 
 // TODO: use Apollo Cache readQuery to access data
 
-export default SpaceCenterCard
+export default SpaceCenterCard;
