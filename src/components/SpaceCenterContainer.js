@@ -14,6 +14,7 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   const [toggleSidePanel, setToggleSidePanel] = useState(false);
   const [pageIndex, setPageIndex] = useState(0);
   const [flights, setFlights] = useState({});
+  const [selectedPlanet, setSelectedPlanet] = useState({});
 
   const { error, loading, data, fetchMore } = useQuery(GET_ALL_SPACE_CENTERS, {
     variables: { page: pageIndex }
@@ -64,7 +65,7 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
     <div>
       <div>
         {toggleSidePanel &&
-          <SidePanel flights={flights} />
+          <SidePanel flights={flights} selectedPlanet={selectedPlanet} />
           // <SidePanel spaceCenter={spaceCenters?.find(x => x.id === "1")?.name} />
         }
       </div>
@@ -77,7 +78,7 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
                 animate={{ opacity: 1, translateX: 1, translateY: 1}}
                 transition={{ duration: 0.2, delay: i * 0.1 }}
               >
-                <SpaceCenterCard setFlights={setFlights} name={value.name} id={value.id} />
+                <SpaceCenterCard setFlights={setFlights} setSelectedPlanet={setSelectedPlanet} name={value.name} id={value.id} planet={value} />
               </motion.div>
             </div>
           )

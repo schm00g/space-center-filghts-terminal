@@ -11,9 +11,19 @@ import {
   Title 
 } from './styles/SidePanel.styled';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { useQuery } from '@apollo/client';
+import { GET_NUMBER_OF_FLIGHTS } from '../GraphQL/Queries';
 
-function SidePanel({ flights }) {
+function SidePanel({ flights, selectedPlanet }) {
   const [sidePanelShown, setSidePanelShown] = useState(true);
+
+  const { error, data } = useQuery(GET_NUMBER_OF_FLIGHTS, {
+    variables: { from: selectedPlanet.id }
+  });
+
+  if (error){
+    console.error(`Error! ${error.message}`);
+  };
   
   const hidePanel = () => {
     // TODO: two components have separate management of toggle state...
@@ -25,15 +35,10 @@ function SidePanel({ flights }) {
       {sidePanelShown &&
         <Panel>
           <Button onClick={hidePanel}><Icon><AiOutlinePlus></AiOutlinePlus></Icon></Button>
-          <Title>Hello world!</Title>
-          <Description>
-            Yada yada yada yada yada yada yada yada
-            Yada yada yada yada yada yada yada yada
-            Yada yada yada yada yada yada yada yada
-            Yada yada yada yada yada yada yada yada
-          </Description>
+          <Title>{selectedPlanet.name}</Title>
+          <Description>{selectedPlanet.description}</Description>
           <Flights>Number of flights:</Flights>
-          <FlightCount>1234</FlightCount>
+          <FlightCount>{data.flights.pagination.total}</FlightCount>
           <Departures>Departures</Departures>
           <DepartureDetails flights={flights}></DepartureDetails>
         </Panel>
