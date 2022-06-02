@@ -62,12 +62,12 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
     console.error(`Error! ${error.message}`);
   };
   
-  let svgPath = require(`../assets/planets/planet-${id % 10}.svg`)
+  let svgPath = require(`../assets/planets/planet-${Math.floor(Math.random() * 9 + 1)}.svg`)
 
   return (
     <Card onClick={() => selectPlanet({ variables: { from: id } })}>
       <img src={svgPath} alt="Planet"/>
-      <Title>{name}</Title>
+      <Title>{id} {name}</Title>
       <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
     </Card>
   )
