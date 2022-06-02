@@ -9,11 +9,10 @@ function SpaceCenterCard({ name, id }) {
   const [flights, setFlights] = useState([]);
 
   // TODO: capture selected planet to update state/css
-  // https://www.youtube.com/watch?v=n9-rwQmnzYA
 
   useEffect(() => {
     if(data){
-      console.log(`data: `, data);
+      console.log(`flights data: `, data.flights.nodes);
       setFlights(data);
     }
   }, [data]);
