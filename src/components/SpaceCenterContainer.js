@@ -66,7 +66,6 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
       <div>
         {toggleSidePanel &&
           <SidePanel flights={flights} selectedPlanet={selectedPlanet} />
-          // <SidePanel spaceCenter={spaceCenters?.find(x => x.id === "1")?.name} />
         }
       </div>
       <Wrapper>
