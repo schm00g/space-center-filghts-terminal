@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
 import { Button, ButtonWrapper, Loading, Wrapper } from './styles/Container.styled';
 
-function SpaceCenterContainer() {
+function SpaceCenterContainer({ numberOfSpaceCenters }) {
   
   const [spaceCenters, setSpaceCenters] = useState([]);
   const [toggleSidePanel, setToggleSidePanel] = useState(false);
@@ -17,6 +17,9 @@ function SpaceCenterContainer() {
   const { error, loading, data, fetchMore } = useQuery(GET_ALL_SPACE_CENTERS, {
     variables: { page: pageIndex }
   });
+
+  const PAGE_SIZE = 9;
+  const NUMBER_OF_PAGES = numberOfSpaceCenters / PAGE_SIZE;
 
   useEffect(() => {
     if(data){
@@ -28,13 +31,11 @@ function SpaceCenterContainer() {
     // TODO: rework logic, off by one is 99 limit correct?
     if(pageIndex <= 0){
       setPageIndex(0);
-      console.log(pageIndex);
     }
-    if(pageIndex >= 99){
-      setPageIndex(99);
-      console.log(pageIndex);
+    if(pageIndex >= NUMBER_OF_PAGES){
+      setPageIndex(NUMBER_OF_PAGES);
     }
-  }, [pageIndex])
+  }, [pageIndex, NUMBER_OF_PAGES])
 
   const handleClick = () => {
     setToggleSidePanel(true);
@@ -83,8 +84,9 @@ function SpaceCenterContainer() {
       </Wrapper>
       <ButtonWrapper>
         <Button onClick={() => {
+          setPageIndex(pageIndex - 1)
           fetchMore({
-            variables: { page: setPageIndex(pageIndex - 1) },
+            variables: { page: pageIndex },
             updateQuery: (_, {fetchMoreResult}) => {
               return fetchMoreResult;
             }
@@ -94,8 +96,9 @@ function SpaceCenterContainer() {
           Previous
         </Button>
           <Button onClick={() => {
+            setPageIndex(pageIndex + 1);
             fetchMore({
-              variables: { page: setPageIndex(pageIndex + 1) },
+              variables: { page: pageIndex },
               updateQuery: (_, {fetchMoreResult}) => {
                 return fetchMoreResult;
               }
