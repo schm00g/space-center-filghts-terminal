@@ -111,6 +111,4 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   )
 };
 
-// TODO: fix me -> Uncaught (in promise) Error: Response not successful: Received status code 400
-
 export default SpaceCenterContainer
