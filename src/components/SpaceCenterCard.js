@@ -4,8 +4,8 @@ import { GET_DEPARTURE_DETAILS_FROM_PLANET } from '../GraphQL/Queries';
 import FlightCount from './FlightCount';
 import { Card, Title} from './styles/Cards.styled';
 
-function SpaceCenterCard({ name, totalFlightNumber, id }) {
-  const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
+function SpaceCenterCard({ name, id }) {
+  const [selectPlanet, { error, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
   const [flights, setFlights] = useState([]);
 
   // TODO: capture selected planet to update state/css
@@ -32,7 +32,5 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
     </Card>
   )
 }
-
-// TODO: use Apollo Cache readQuery to access data
 
 export default SpaceCenterCard;

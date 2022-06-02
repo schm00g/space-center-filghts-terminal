@@ -75,7 +75,7 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
                 animate={{ opacity: 1, translateX: 1, translateY: 1}}
                 transition={{ duration: 0.2, delay: i * 0.1 }}
               >
-                <SpaceCenterCard name={value.name} totalFlightNumber={10} id={value.id} />
+                <SpaceCenterCard name={value.name} id={value.id} />
               </motion.div>
             </div>
           )
