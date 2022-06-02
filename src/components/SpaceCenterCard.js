@@ -4,18 +4,17 @@ import { GET_DEPARTURE_DETAILS_FROM_PLANET } from '../GraphQL/Queries';
 import FlightCount from './FlightCount';
 import { Card, Title} from './styles/Cards.styled';
 
-function SpaceCenterCard({ name, id }) {
+function SpaceCenterCard({ name, id, setFlights }) {
   const [selectPlanet, { error, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
-  const [flights, setFlights] = useState([]);
 
   // TODO: capture selected planet to update state/css
 
   useEffect(() => {
     if(data){
-      console.log(`flights data: `, data.flights.nodes);
-      setFlights(data);
+      console.log(`Flights data for side panel: `, data?.flights?.nodes);
+      setFlights(data?.flights?.nodes);
     }
-  }, [data]);
+  }, [data, setFlights]);
 
   if (error){
     console.error(`Error! ${error.message}`);

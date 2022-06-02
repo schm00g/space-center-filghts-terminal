@@ -12,9 +12,9 @@ import {
 } from './styles/SidePanel.styled';
 import { AiOutlinePlus } from 'react-icons/ai';
 
-function SidePanel({ spaceCenter }) {
+function SidePanel({ flights }) {
   const [sidePanelShown, setSidePanelShown] = useState(true);
-
+  
   const hidePanel = () => {
     // TODO: two components have separate management of toggle state...
     setSidePanelShown(false);
@@ -25,7 +25,7 @@ function SidePanel({ spaceCenter }) {
       {sidePanelShown &&
         <Panel>
           <Button onClick={hidePanel}><Icon><AiOutlinePlus></AiOutlinePlus></Icon></Button>
-          <Title>{spaceCenter}</Title>
+          <Title>Hello world!</Title>
           <Description>
             Yada yada yada yada yada yada yada yada
             Yada yada yada yada yada yada yada yada
@@ -35,7 +35,7 @@ function SidePanel({ spaceCenter }) {
           <Flights>Number of flights:</Flights>
           <FlightCount>1234</FlightCount>
           <Departures>Departures</Departures>
-          <DepartureDetails></DepartureDetails>
+          <DepartureDetails flights={flights}></DepartureDetails>
         </Panel>
       }
     </div>

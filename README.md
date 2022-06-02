@@ -29,7 +29,7 @@ This project has been scaffolded using `create-react-app`.
 
 For the GraphQL service `apollo-grapql` has been imported. 
 
-For styling and layout `styled-components` has been used. This allows the use of CSS in javascript files. 
+For styling and layout `styled-components` has been used. This allows the use of CSS in javascript files. For some added transitions and effects `framer-motion` to smoothen the UI was used. 
 
 Future work. Add greater test coverage: unit, integration, end-to-end. Make design and layout responsive for different device sizes. 
 
