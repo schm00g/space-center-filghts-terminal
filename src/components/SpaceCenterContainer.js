@@ -15,6 +15,7 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   const [pageIndex, setPageIndex] = useState(0);
   const [flights, setFlights] = useState({});
   const [selectedPlanet, setSelectedPlanet] = useState({});
+  const [sidePanelShown, setSidePanelShown] = useState(false);
 
   const { error, loading, data, fetchMore } = useQuery(GET_ALL_SPACE_CENTERS, {
     variables: { page: pageIndex }
@@ -39,7 +40,7 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   }, [pageIndex, NUMBER_OF_PAGES])
 
   const handleClick = () => {
-    setToggleSidePanel(true);
+    setSidePanelShown(true);
   };
 
   if(loading){
@@ -64,8 +65,8 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   return (
     <div>
       <div>
-        {toggleSidePanel &&
-          <SidePanel flights={flights} selectedPlanet={selectedPlanet} />
+        {sidePanelShown &&
+          <SidePanel flights={flights} selectedPlanet={selectedPlanet} setSidePanelShown={setSidePanelShown}></SidePanel>
         }
       </div>
       <Wrapper>

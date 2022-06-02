@@ -8,9 +8,9 @@ export const Card = styled.button`
   padding: 0 16px 16px 16px;
   margin: 5px;
   border: 3px solid white;
-  box-shadow: 1px 2px 4px rgba(0 0 0 / 0.2);
+  box-shadow: 1px 2px 4px rgba(0 0 0 / 0.1);
   &:hover {
-    box-shadow: 1px 2px 10px rgba(0 0 0 / 0.2);
+    box-shadow: 1px 2px 10px rgba(0 0 0 / 0.1);
   }
 
   // ${({ active }) => active && `

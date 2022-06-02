@@ -14,9 +14,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { useQuery } from '@apollo/client';
 import { GET_NUMBER_OF_FLIGHTS } from '../GraphQL/Queries';
 
-function SidePanel({ flights, selectedPlanet }) {
-  const [sidePanelShown, setSidePanelShown] = useState(true);
-
+function SidePanel({ flights, selectedPlanet, setSidePanelShown }) {
   const { error, data } = useQuery(GET_NUMBER_OF_FLIGHTS, {
     variables: { from: selectedPlanet.id }
   });
@@ -32,17 +30,15 @@ function SidePanel({ flights, selectedPlanet }) {
 
   return (
     <div>
-      {sidePanelShown &&
-        <Panel>
-          <Button onClick={hidePanel}><Icon><AiOutlinePlus></AiOutlinePlus></Icon></Button>
-          <Title>{selectedPlanet.name}</Title>
-          <Description>{selectedPlanet.description}</Description>
-          <Flights>Number of flights:</Flights>
-          <FlightCount>{data.flights.pagination.total}</FlightCount>
-          <Departures>Departures</Departures>
-          <DepartureDetails flights={flights}></DepartureDetails>
-        </Panel>
-      }
+      <Panel>
+        <Button onClick={hidePanel}><Icon><AiOutlinePlus></AiOutlinePlus></Icon></Button>
+        <Title>{selectedPlanet.name}</Title>
+        <Description>{selectedPlanet.description}</Description>
+        <Flights>Number of flights:</Flights>
+        <FlightCount>{data.flights.pagination.total}</FlightCount>
+        <Departures>Departures</Departures>
+        <DepartureDetails flights={flights}></DepartureDetails>
+      </Panel>
     </div>
   )
 }

@@ -9,6 +9,7 @@ export const Panel = styled.section`
     padding: 32px;
     margin: 5px;
     text-align: left;
+    box-shadow: 1px 2px 4px rgba(0 0 0 / 0.1);
 `;
 
 export const Title = styled.div`
@@ -32,7 +33,7 @@ export const Flights = styled.div`
 `;
 
 export const FlightCount = styled.div`
-    
+    font-weight: 600;
 `;
 
 export const Departures = styled.div`
