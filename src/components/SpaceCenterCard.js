@@ -18,10 +18,6 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
     }
   }, [data]);
 
-  if(loading){
-    // console.log("Loading...");
-  };
-
   if (error){
     console.error(`Error! ${error.message}`);
   };
