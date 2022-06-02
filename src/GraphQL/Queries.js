@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 // TODO: rename
-export const GET_ALL_SPACE_CENTERS = gql`
-    query GetFirstPageSpaceCenters {
-        spaceCenters(page: 1, pageSize: 9) {
+export const GET_ALL_SPACE_CENTERS= gql`
+    query GetFirstPageSpaceCenters($page: Int!) {
+        spaceCenters(page: $page, pageSize: 9) {
             nodes {
                 id
                 name
@@ -45,6 +45,7 @@ export const GET_NUMBER_OF_FLIGHTS = gql`
         }
     }
 `;
+
 // query GetFirstPageSpaceCenters {
 //     flights(from: "2", pageSize: 1000) {
 //     		pagination {
