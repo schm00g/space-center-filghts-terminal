@@ -7,8 +7,6 @@ import { Card, Title} from './styles/Cards.styled';
 function SpaceCenterCard({ name, id, setFlights, setSelectedPlanet, planet }) {
   const [selectPlanet, { error, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
 
-  // TODO: capture selected planet to update state/css
-
   useEffect(() => {
     if(data){
       setFlights(data?.flights?.nodes);

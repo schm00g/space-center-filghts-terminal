@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const Panel = styled.section`
+    position: absolute;
+    z-index: 9;
+    right: 2%;
     font-size: 16px;
     color: black; 
     width 408px;
@@ -13,6 +16,7 @@ export const Panel = styled.section`
 `;
 
 export const Title = styled.div`
+    cursor: move;
     padding-top: 48px;
     font-size: 18px;
     width: 300px;

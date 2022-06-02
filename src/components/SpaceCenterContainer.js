@@ -11,7 +11,6 @@ import { Button, ButtonWrapper, Loading, Wrapper } from './styles/Container.styl
 function SpaceCenterContainer({ numberOfSpaceCenters }) {
   
   const [spaceCenters, setSpaceCenters] = useState([]);
-  const [toggleSidePanel, setToggleSidePanel] = useState(false);
   const [pageIndex, setPageIndex] = useState(0);
   const [flights, setFlights] = useState({});
   const [selectedPlanet, setSelectedPlanet] = useState({});
@@ -44,7 +43,6 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   };
 
   if(loading){
-    // TODO: have <SpaceCenterContainer> take img as input?
     return (
       <motion.div 
         initial={{ opacity: 0.1}}

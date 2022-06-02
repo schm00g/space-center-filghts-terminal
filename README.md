@@ -38,16 +38,17 @@ Light weight icon set `react-icons`.
 ### Future Steps
 Get some user testing and feedback - to focus further iterations.
 
-Fix side panel toggle logic.
-
-Refine GraphQL query choices and structure - to better performance and reduce repeated refetching.
-
 Add test coverage: unit (Jest), integration, end-to-end (Cypress). Make design and layout responsive for different device sizes. 
+
+Refine GraphQL query choices and structure - to better performance and reduce repeated refetching. I would like to dig more into the data structures and how to leverage the graph model better. Just looking at the planet departures list on the side panel makes me curious weather the query is what we need. 
 
 Consider adding state management like Redux to manage increased complexity of state. Alternatively use caching that is built in to `apollo-client` V3 as a state management solution. The benefit of this is that it is ready to go once `apollo-client` is in use. Apollo client under-the-hood normalises and stores the results of each GraphQL queries in-memory locally, using `InMemoryCache` flat lookup. Currently I am using `useState` and passing as props to components. As applications scale more robust state management is required as a single "source-of-truth" thus avoiding managing multiple versions of state in different locations. 
 
-Refine transitions and layout styling (currently a little bit jarring).
+Allocate the SVG images to the cards without using .random().
 
+Refine transitions and layout styling (currently a little bit jarring) - smoother loading.
+
+Reorganise the structure of the styled components styles. - so they are more composable / reusable.
 
 ### Play with Demo on Vercel
 

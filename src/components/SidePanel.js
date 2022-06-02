@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DepartureDetails from './DepartureDetails';
 import { 
   Button, 
@@ -24,7 +24,6 @@ function SidePanel({ flights, selectedPlanet, setSidePanelShown }) {
   };
   
   const hidePanel = () => {
-    // TODO: two components have separate management of toggle state...
     setSidePanelShown(false);
   };
 
