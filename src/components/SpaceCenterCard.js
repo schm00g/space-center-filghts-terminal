@@ -3,13 +3,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GET_DEPARTURE_DETAILS_FROM_PLANET } from '../GraphQL/Queries';
 
-const Wrapper = styled.section`
-  width: 300px;
-  display: inline-grid;
-`;
-
 const Card = styled.button`
   color: black; 
+  width: 280px;
   background-color: white;
   border-radius: 15px;
   padding: 0 16px 16px 16px;
@@ -45,19 +41,20 @@ const SubTitle = styled(Title)`
 
 function SpaceCenterCard({ name, totalFlightNumber, id }) {
   const [selectPlanet, { error, loading, data }] = useLazyQuery(GET_DEPARTURE_DETAILS_FROM_PLANET);
-  const [destinations, setDestinations] = useState([]);
+  const [flights, setFlights] = useState([]);
 
   // TODO: capture selected planet to update state/css
+  // https://www.youtube.com/watch?v=n9-rwQmnzYA
 
   useEffect(() => {
     if(data){
-      console.log(data.flights.nodes);
-      setDestinations(data.flights.nodes);
+      console.log(`data: `, data);
+      setFlights(data);
     }
   }, [data]);
 
   if(loading){
-    console.log("Loading...");
+    // console.log("Loading...");
   };
 
   if (error){
@@ -67,13 +64,11 @@ function SpaceCenterCard({ name, totalFlightNumber, id }) {
   let svgPath = require(`../assets/planets/planet-${id % 10}.svg`)
 
   return (
-    <Wrapper>
-      <Card onClick={() => selectPlanet({ variables: { from: id } })}>
-        <img src={svgPath} alt="Planet"/>
-        <Title>{name}</Title>
-        <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
-      </Card>
-    </Wrapper>
+    <Card onClick={() => selectPlanet({ variables: { from: id } })}>
+      <img src={svgPath} alt="Planet"/>
+      <Title>{name}</Title>
+      <SubTitle>Number of flights: {totalFlightNumber}</SubTitle>
+    </Card>
   )
 }
 

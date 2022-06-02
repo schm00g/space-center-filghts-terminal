@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DepartureDetails from './DepartureDetails';
 import styled from 'styled-components';
+import { useApolloClient } from '@apollo/client';
 
 const Panel = styled.section`
   font-size: 16px;
@@ -46,10 +47,9 @@ const Departures = styled.div`
 
 const Button = styled.button`
   position: absolute;
-  
   background-color: #f0f0f0;
   border: none;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 5px;
   color: grey;
   &:hover {
@@ -58,17 +58,29 @@ const Button = styled.button`
 `;
 
 const Icon = styled.div`
-  transform: rotate(-45deg) translateX(1px) translateY(1px);
-  font-size: 20px;
+  transform: rotate(-45deg) translateX(0.5px) translateY(-1px);
+  font-size: 25px;
 `;
 
-function SidePanel() {
+function SidePanel({ spaceCenter }) {
+  // https://www.youtube.com/watch?v=6_39tpIBGIA
+  
+  const client = useApolloClient();
 
-  // const client = useApolloClient();
+  // const { flights } = client.readQuery({
+  //   query: GET_DEPARTURE_DETAILS_FROM_PLANET,
+  //   variables: {
+  //     id: 4,
+  //   }
+  // });
+
+  console.log(`Client: `, client.readQuery);
+  // console.log(`readQuery: `, flights);
 
   const [sidePanelShown, setSidePanelShown] = useState(true);
 
   const hidePanel = () => {
+    // TODO: two components have separate management of toggle state...
     setSidePanelShown(false);
   };
 
@@ -77,7 +89,7 @@ function SidePanel() {
       {sidePanelShown &&
         <Panel>
           <Button onClick={hidePanel}><Icon>+</Icon></Button>
-          <Title>Wolf Valley Space Center</Title>
+          <Title>{spaceCenter}</Title>
           <Description>
             Yada yada yada yada yada yada yada yada
             Yada yada yada yada yada yada yada yada

@@ -1,16 +1,12 @@
 import './App.css';
-import SidePanel from './components/SidePanel';
-import SpaceCenterGrid from './components/SpaceCenterGrid';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      {/* TODO: break out from header */}
-      <header className="App-header">
-        <h1>Spacious</h1>
-        <SpaceCenterGrid />
-        <SidePanel />
-      </header>
+    <div className="app">
+      <main className="app-main">
+        <Home />
+      </main>
     </div>
   );
 }

@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   ApolloClient,
-  InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  gql
+  gql,
+  InMemoryCache
 } from "@apollo/client";
+// import { cache } from "./cache";
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 
