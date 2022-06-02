@@ -28,7 +28,6 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
   }, [data]);
 
   useEffect(() => {
-    // TODO: rework logic, off by one is 99 limit correct?
     if(pageIndex <= 0){
       setPageIndex(0);
     }

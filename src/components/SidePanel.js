@@ -43,5 +43,3 @@ function SidePanel({ spaceCenter }) {
 }
 
 export default SidePanel;
-
-// TODO: use makeVar apollo cache
