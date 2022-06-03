@@ -27,7 +27,7 @@ function SpaceCenterCard({ name, id, setFlights, setSelectedPlanet, planet }) {
   return (
     <Card onClick={() => handleClick(id)}>
       <img src={svgPath} alt="Planet"/>
-      <Title>{name}</Title>
+      <Title className="space-center-card-title">{name}</Title>
       <FlightCount id={id} />
     </Card>
   )
