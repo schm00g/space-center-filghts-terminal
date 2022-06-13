@@ -15,7 +15,6 @@ export const PlanetAvatar = styled.div`
   grid-row: 1 / 1;
 `;
 
-// TODO: should styled be intertwined with logic?
 export const FlightDetails = styled.div`
   padding-left: 2%;
   grid-column: 2 / 5;

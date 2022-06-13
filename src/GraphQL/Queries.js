@@ -1,7 +1,5 @@
 import { gql } from '@apollo/client';
 
-// TODO improve query naming
-
 export const GET_ALL_SPACE_CENTERS = gql`
     query GetSpaceCenters($page: Int!) {
         spaceCenters(page: $page, pageSize: 9) {

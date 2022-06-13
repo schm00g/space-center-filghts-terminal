@@ -21,7 +21,7 @@ function SidePanel({ flights, selectedPlanet, setSidePanelShown }) {
 
   if (error){
     console.error(`Error! ${error.message}`);
-  };
+  }
   
   const hidePanel = () => {
     setSidePanelShown(false);

@@ -54,11 +54,11 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
         </Loading>
       </motion.div>
     )
-  };
+  }
 
   if (error){
     console.error(`Error! ${error.message}`);
-  }; 
+  } 
 
   return (
     <div>
@@ -110,6 +110,6 @@ function SpaceCenterContainer({ numberOfSpaceCenters }) {
       </ButtonWrapper>
     </div>
   )
-};
+}
 
 export default SpaceCenterContainer

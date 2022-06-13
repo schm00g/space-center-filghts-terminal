@@ -20,7 +20,7 @@ function SpaceCenterCard({ name, id, setFlights, setSelectedPlanet, planet }) {
 
   if (error){
     console.error(`Error! ${error.message}`);
-  };
+  }
   
   let svgPath = require(`../assets/planets/planet-${Math.floor(Math.random() * 9 + 1)}.svg`)
 

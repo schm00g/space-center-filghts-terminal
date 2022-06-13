@@ -12,7 +12,7 @@ function FlightCount({id}) {
   
   if (error){
     console.error(`Error! ${error.message}`);
-  };
+  }
   
   useEffect(() => {
     if(data){

@@ -50,6 +50,7 @@ Refine transitions and layout styling (currently a little bit jarring) - smoothe
 
 Reorganise the structure of the styled components styles. - so they are more composable / reusable.
 
-### Play with Demo on Vercel
+### Notes
 
-[Here](https://space-center-filghts-terminal.vercel.app/)
+To lint run: 
+`npx eslint . --fix`
