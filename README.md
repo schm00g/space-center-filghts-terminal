@@ -54,3 +54,5 @@ Reorganise the structure of the styled components styles. - so they are more com
 
 To lint run: 
 `npx eslint . --fix`
+
+WARN: linting in progress...
